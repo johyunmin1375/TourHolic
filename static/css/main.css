@@ -1,0 +1,175 @@
+.white-text{
+    color: #fff !important;
+}
+#fp-nav ul li a span{
+    background-color: black;
+}
+/* 1번 페이지 */
+.first{
+    background: url(../images/mainHO.jpg) no-repeat;
+    background-size: cover;
+    /* background-position: 0px -200px; */
+}
+.first .header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.first .header .header_title{
+    position: absolute;
+    left: 5%;
+}
+.first .header .header_title .header_titleMain{
+    display: inline;
+    font-size: 28px;
+    font-family: "Noto Sans M";
+}
+.first .header .header_title .header_titleSub{
+    display: inline;
+    margin-left: 5px;
+    font-size: 16px;
+    font-family: "Noto Sans R";
+}
+.first .header .header_nav{
+    position: absolute;
+    right: 5%;
+    margin-top: 15px;
+}
+.first .header .header_nav span{
+    margin-left: 15px;
+    font-size: 18px;
+    font-family: "Noto Sans M";
+}
+.first .mainTitle{
+    width: 85%;
+    margin: 0 auto;
+    margin-top: -5%;
+    text-align: center;
+    font-family: "Noto Sans Bold", "NanumSquare", "Nanum Gothic", "Godo", sans-serif !important;
+}
+.first .mainTitle h1{
+    font-size: 88px;
+    margin: 0;
+}
+.first .mainTitle .subTitle_1{
+    font-size: 38px;
+    margin: 0;
+}
+.first .mainTitle .subTitle_2{
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: 2px;
+}
+.first .mainTitle .schedule_btn{
+    background-color: #26DBE1 !important;
+    letter-spacing: 2px;
+    width: 90px;
+    height: 50px;
+    line-height: 35px;
+    border: 0;
+    margin: 15px 0 0 0;
+    color: #FFF;
+}
+/* 2번페이지 */
+.second .headercont{
+    padding-bottom: 5px;
+    text-align: center;
+    height: 190px;
+}
+
+.second .headercont h3{
+    font-size: 44px;
+    font-family: "Noto Sans L";
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.second .headercont p {
+    display: block;
+    font-family: "Noto Sans L";
+    letter-spacing: 2px;
+}
+
+.second .second_navi{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+.second .second_navi #filter-bar{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    height: 36px;
+    display: inline-flex;
+}
+.second .second_navi #filter-bar li {
+    width: 100px;
+    background-color: transparent;
+    text-align: center;
+    list-style-type: none;
+    z-index: 10;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 36px;
+}
+.second .second_list{
+    width: 80%;
+    height: 70%;
+    margin: 0 auto;
+    /* background-color: #26DBE1; */
+    display: flex;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.second .second_list .card {
+    box-sizing: border-box;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    width: 24%;
+    margin: 1% auto;
+    height: 580px;
+    flex-direction: column;
+    border-radius: 2px;
+    position: relative;
+}
+.placenameblockflag {
+    position: absolute;
+    left: -1px;
+    top: -8px;
+    z-index: 1;
+}
+.card .card_img{
+    overflow: hidden;
+}
+.card .card_img img {
+    display: block;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 480px;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+.card .card_img img:hover{
+    transform: scale(1.2);
+}
+.card .card_content{
+    margin: 5px;
+    height: 5px;
+}
+.card .card_content b{
+    font-size: 28px;
+    font-family: "Noto Sans M";
+    /* letter-spacing: 1px; */
+}
+.card .card_content p{
+    font-family: "Noto Sans L";
+    font-size: 18px;
+    margin: 5px auto;
+}

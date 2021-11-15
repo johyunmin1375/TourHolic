@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투어홀릭</title>
+<link rel="stylesheet" href="/css/jquery.fullPage.css" type="text/css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/font.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/jquery.fullPage.js"></script>
+<script>
+$(document).ready(function(){
+    $("#fullpage").fullpage({
+        autoScrolling : true,
+        scrollHorizontally : true,
+        navigation : true
+    });
+});
+
+function createMap(){
+    location.href="/html/createTour.html";
+}
+</script>
+</head>
+<body>
+<div id="fullpage">
+    <div class="section first">
+        <div class="header white-text">
+            <div class="header_title">
+                <p class="header_titleMain">Tour Holic</p>
+                <p class="header_titleSub">여행에 빠지다</p>
+            </div>
+            <div class="header_nav">
+                <span>여행지</span>
+                <span>투어홀릭</span>
+                <span>이용방법</span>
+            </div>
+        </div>
+        <div class="mainTitle white-text">
+            <h1>TOUR HOLIC</h1>
+            <p class="subTitle_1">나만의 여행 일정 플래너</p>
+            <p class="subTitle_2">쉽고 빠르게 나만의 여행을 계획해보세요</p>
+            <button class="schedule_btn" onclick="createMap()">시작하기</button>
+        </div>
+    </div>
+    <div class="section second">
+        <div class="headercont">
+            <h3>여행지</h3>
+            <p>여행지를 직접 검색하시거나 목록에서 선택해주세요</p>
+            <div class="search_area">
+                <form>
+                    <input type="text" class="text">
+                    <button>검색</button>
+                </form>
+            </div>
+        </div>
+        <div class="second_navi">
+            <ul id="filter-bar">
+                <li>전체</li>
+                <li>아시아</li>
+                <li>유럽</li>
+                <li>아메리카</li>
+                <li>오세아니아</li>
+                <li>아프리카</li>
+            </ul>
+        </div>
+        <div class="second_list">
+            <div class="card">
+                <div class="placenameblockflag">
+                    <img src="../images/korea.png">
+                </div>
+                <div class="card_img"  onclick="createMap()">
+                    <img src="../images/card/busan.jpg" alt="">
+                </div>
+                <div class="card_content">
+                    <b>BUSAN</b>
+                    <br>
+                    <p>대한민국 부산</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="placenameblockflag">
+                    <img src="../images/korea.png">
+                </div>
+                <div class="card_img">
+                    <img src="../images/card/andong.jpg" alt="">
+                </div>
+                <div class="card_content">
+                    <b>ANDONG</b>
+                    <br>
+                    <p>대한민국 안동</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="placenameblockflag">
+                    <img src="../images/korea.png">
+                </div>
+                <div class="card_img">
+                    <img src="../images/card/gangneung.jpg" alt="">
+                </div>
+                <div class="card_content">
+                    <b>GANGNEUNG</b>
+                    <br>
+                    <p>대한민국 강릉</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="placenameblockflag">
+                    <img src="../images/korea.png">
+                </div>
+                <div class="card_img">
+                    <img src="../images/card/jeonju.jpg" alt="">
+                </div>
+                <div class="card_content">
+                    <b>JEONJU</b>
+                    <br>
+                    <p>대한민국 전주</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투어홀릭</title>
+<link rel="stylesheet" href="/css/jquery.fullPage.css" type="text/css">
+<link rel="stylesheet" href="/css/createTour.css">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/calander.css">
+<style>
+body{margin: 0;}
+@keyframes expand {
+  from {
+    /* transform: scale(0); */
+    padding-top: 1.5em;
+    opacity: 0;
+  }
+}
+.box {
+  animation: expand .5s ease-in-out;
+}
+</style>
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- fullpage plugin CDN -->
+<script src="/js/jquery.fullPage.js"></script>
+<!-- fontAwesome CDN -->
+<script src="https://kit.fontawesome.com/26cbc4e8f9.js" crossorigin="anonymous"></script>
+<script src="/js/createTour.js"></script>
+<script src="/js/Place.js"></script>
+<script src="/js/calander.js"></script>
+<script src="/js/DateBox.js"></script>
+<script src="/js/lib.js"></script>
+<script>
+let mapProp;
+let map;
+let num = 1;
+let placeArray=[];
+let searchArray = [];
+// 맵생성
+function myMap() {
+    mapProp= {
+        center:new google.maps.LatLng(37.55095574055044, 126.9880405738689),
+        zoom:7,
+    };
+    map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+// api 정보 받아오기
+function getList(){
+    $.ajax({
+        url : "/tour/list",
+        type : "GET",
+        success:function(result, status, xhr){
+            printList(result);
+        },
+        error:function(xhr, status, error){
+        }
+    });
+}
+// 검색 요청
+function searchData(){
+    let keyWord = encodeURI($("input#search").val());
+    console.log(keyWord)
+    $.ajax({
+        url : "/tour/search?tour_name="+keyWord,
+        type : "GET",
+        success:function(result, status, xhr){
+            console.log(result);
+            searchList(result);
+        },
+        error:function(xhr, status, error){
+        }
+    });
+}
+// api 정보 화면에 뿌리기    
+function printList(data){
+    let jsonArray=JSON.parse(data);
+    console.log(jsonArray);
+    
+    for(let i=0;i<jsonArray.response.body.items.item.length;i++){
+        let json =jsonArray.response.body.items.item[i];
+        
+        let place = new Place(document.getElementById("list"), json.firstimage, json.title, json.mapy, json.mapx, json.addr1);   
+        placeArray.push(place); 
+    }
+}
+
+function searchList(data){
+    let jsonArray=JSON.parse(data);
+    //console.log(jsonArray);
+    $("#list").html("");
+    for(let i=0;i<jsonArray.response.body.items.item.length;i++){
+        let json =jsonArray.response.body.items.item[i];
+        if(json.firstimage == undefined){
+            json.firstimage ="/images/default.png"
+        }
+        let place = new Place(document.getElementById("list"), json.firstimage, json.title, json.mapy, json.mapx);   
+        searchArray.push(place); 
+    }
+}
+// 선택목록에 항목 추가
+function addList(no, title, src, mapy, mapx, addr){
+    // alert(no + "번째 관광지 선택!\ntitle : " +title +"\nsrc : " + src +"\nmapy : " + mapy + "\nmapx : " +mapx);
+    if(num<6){
+        let result = "";
+        result += '<div class="add_list_place box">';
+        result += '<div class="add_num">'+num+'</div>';
+        result += '<div class="add_img">';
+        result += '<img src="'+src+'" alt="">';
+        result += '</div>';
+        result += '<div class="add_content">'+title+'</div>';
+        result += '<input type="hidden" name="title'+num+'" value="'+title+'">';
+        result += '<input type="hidden" name="addr'+num+'" value="'+addr+'">';
+        result += '<input type="hidden" name="mapy" value="'+mapy+'">';
+        result += '<input type="hidden" name="mapx" value="'+mapx+'">';
+        result += '</div>';
+        num++
+        $("#registForm").append(result);
+
+        // 지도에 위치 찍어주기
+        let latlng = new google.maps.LatLng(mapy, mapx);
+        let marker = new google.maps.Marker({
+            position: latlng,
+            animation:google.maps.Animation.DROP
+        });
+        marker.setMap(map);
+    }else{
+        alert("관광지는 하루 최대 5곳입니다.")
+    }
+}
+// 날짜 선택
+function selectDate(){
+
+}
+
+$(function(){
+    // fullPage
+    $("#fullpage").fullpage({
+        autoScrolling : true,
+        scrollHorizontally : true,
+        navigation : false
+    });
+    
+    // mainPage Link
+    $(".header_title_main").click(function(){
+        location.href="/html/main.html"
+    });
+
+    // 캘린더
+    let d = new Date();
+    let yy = d.getFullYear();
+    let mm = d.getMonth()+1;
+    let dd = d.getDate();
+    $("#calander").val(yy +" - "+mm+" - "+dd);
+    $("#calander").click(function(){
+        $("#cal_wrapper").show();
+    })
+
+    //일정 생성
+    $("#create_btn").click(function(){
+        if(confirm("일정을 생성하시겠습니까?")){
+            $("#registForm").attr("action","/tour/detail");
+            $("#registForm").attr("method","post");
+            $("#registForm").submit();
+        }else{
+
+        }
+    });
+    $(".area_title").click(function(){
+        $("#list").html("");
+        getList();
+    });
+    getList();
+});
+</script>
+</head>
+<body>
+<!-- fullpage start -->
+<div id="fullpage">
+    <!-- section - 1 -->
+    <div class="section">
+        <!-- calander -->
+        <div id="cal_wrapper" style="display: none;">
+            <div id="navi">
+                <button id="bt_prev" onClick="prevMonth()"><</button>
+                <span id="cal_title">2021년 03월</span>
+                <button id="bt_next" type="button" onClick="nextMonth()">></button>
+            </div>
+            <div id="day_area"></div>
+            <div id="date_area"></div>
+        </div>
+        <!-- header -->
+        <div id="header">
+            <div class="header_title">
+                <div class="header_title_main">TOUR HOLIC</div>
+                <div class="header_title_sub">여행에 빠지다</div>
+            </div>
+            <div class="create_btn">
+                <button id="create_btn">일정 생성</button>
+            </div>
+        </div>
+        <div class="container">
+            <!-- left-side -->
+            <div class="left_side">
+                <div class="tour_date">
+                    <input type="text" id="tour_title" name="tour_title" placeholder="여행 제목을 입력해주세요...">
+                    <div class="tour_date_title">여행 날짜</div>
+                    <input type="text" id="calander">
+                </div>
+                <!-- tour_list -->
+                <div class="tour_list">
+                    <div class="tour_list_title">
+                        <div>선택 목록</div>
+                        <div class="add_list">
+                            <form id="registForm"></form>
+                            <!-- <div class="add_list_place">
+                                <div class="add_num">1</div>
+                                <div class="add_img">
+                                    <img src="#" alt="">
+                                </div>
+                                <div class="add_content">관광지 이름</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content Map -->
+            <div class="contentMap">
+                <div id="googleMap" style="width:100%;height:100%;"></div>
+                <!-- 
+                    구글맵을 불러오는데는, 시간이 필요하다 이때 구급맵이 브라우저에 다 로드가 되면
+                    callback에서 명시한 myMap이라는 함수를 호출 
+                -->
+            </div>
+            <!-- right-side -->
+            <div id="right_side" class="right_side">
+                <div class="right_side_search">
+                    <input id="search" name="tour_name" type="text" placeholder="검색어를 입력하세요">
+                    <button onclick="searchData()"><i class="fas fa-search"></i></button>
+                </div>        
+                <div class="area_title"><i class="fas fa-map-marker-alt"></i> 장소</div>
+                <!-- 관광지 목록 -->
+                <div class="area_list">
+                    <!-- 관광지 -->
+                    <div id="list">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQNGBqLGgW25841Uxvtg0JJ2mfJCkQ6s&callback=myMap"></script>
+</body>
+</html>

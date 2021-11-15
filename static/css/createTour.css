@@ -1,0 +1,266 @@
+/* header */
+#header{
+    position: relative;
+    z-index: 9999;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+}
+/* header - title */
+#header .header_title{
+    font-family: "Noto Sans L";
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 10px;
+}
+#header .header_title .header_title_main{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+#header .header_title .header_title_sub{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-left: 5px;
+}
+/* header - create_btn */
+#header .create_btn{
+    box-sizing: border-box;
+    display: inline-block;
+    float: right;
+    width: 150px;
+    height: 50px;
+    background: rgb(17, 14, 14);
+}
+#header .create_btn button{
+    box-sizing: border-box;
+    width: 150px;
+    height: 50px;
+    border: 0px;
+    background: #fff;
+    font-family: "Noto Sans L";
+    font-weight: bold;
+    font-size: 16px;
+}
+/* container */
+.container{
+    width: 100%;
+    height: 95%;
+    display: flex;
+}
+
+/* left - side */
+.left_side{
+    box-sizing: border-box;
+    width: 15%;
+    height: 100%;
+    /* background-color: rosybrown; */
+}
+.left_side .tour_date{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 120px;
+    /* box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%); */
+    background-color: #203341;
+    color: #fff;
+    text-align: center;
+}
+.left_side .tour_date #tour_title{
+    width: 95%;
+    height: 30px;
+    margin-top: 5px;
+    text-align: center;
+}
+.left_side .tour_date .tour_date_title{
+    font-family: "Noto Sans L";
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    padding-top: 5px;
+}
+.left_side .tour_date #calander{
+    width: 95%;
+    height: 30px;
+    /* box-sizing: border-box; */
+    /* background-color: #203341; */
+    /* border: 0; */
+    /* color: #fff; */
+    text-align: center;
+    font-family: "Noto Sans L";
+    font-size: 18px;
+    font-weight: bold;
+}
+.left_side .tour_list{
+    width: 100%;
+    min-height: 200px;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    margin-top: 10px;
+}
+.left_side .tour_list .tour_list_title{
+    font-family: "Noto Sans L";
+    font-weight: bold;
+    padding-top: 5px;
+    text-align: center;
+}
+.left_side .tour_list .add_list_place{
+    position: relative;
+    width: 96%;
+    height: 110px;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    margin: 10px auto;
+    display: flex;
+    border-radius: 2px;
+}
+.left_side .tour_list .add_list_place .add_num{
+    box-sizing: border-box;
+    width:40px;
+    height: 40px;
+    background-color: #203341;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 24px;
+    line-height: 36px;
+    margin: 35px 10px;
+}
+.left_side .tour_list .add_list_place .add_img{
+    width: 30%;
+    height: 80px;
+    margin: 15px 0;
+}
+.left_side .tour_list .add_list_place .add_img img{
+    width: 100%;
+    height: 100%;
+}
+.left_side .tour_list .add_list_place .add_content{
+    margin: 12px 5px;
+}
+/* content Map */
+.contentMap{
+    box-sizing: border-box;
+    width: 70%;
+    height: 100%;
+}
+/* right-side */
+.right_side{
+    box-sizing: border-box;
+    width: 15%;
+    height: 920px;
+    font-family: "Noto Sans L";
+    overflow:scroll;
+}
+/* right_side - search */
+.right_side_search{
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    display: flex;
+}
+.right_side_search input[type=text]{
+    box-sizing: border-box;
+    width: 80%;
+    height: 45px;
+    color: #000;
+    border: 0px;
+    text-align: center;
+}
+.right_side_search button{
+    box-sizing: border-box;
+    width: 20%;
+    height: 45px;
+    color: #FFF;
+    background-color: #000;
+    border: 0px;
+}
+/* right_side - title */
+.right_side .area_title{
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background-color: dodgerblue;
+    color: #fff;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    cursor: pointer;
+    transition: all ease 0.5s 0s;
+}
+.right_side .area_title:hover{
+    background-color: #203341;
+}
+/* right_side - list */
+.right_side .area_list{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.right_side .area_list_place{
+    position: relative;
+    width: 98%;
+    height: 100px;
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    margin: 10px auto;
+    display: flex;
+    border-radius: 2px;
+}
+.right_side .area_list_place .place_img{
+    width: 40%;
+    height: 80px;
+    margin: 10px;
+}
+.right_side .area_list_place .place_img img{
+    width: 100%;
+    height: 100%;
+}
+.right_side .area_list_place .place_content{
+    width: 60%;
+    height: 100px;
+    margin: 10px 0px;
+}
+.right_side .area_list_place .place_content .place_title{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+}
+.right_side .area_list_place .place_content button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: #fff;
+    transition: all 300ms ease-in-out;
+    font-size: 16px;
+}
+.right_side .area_list_place .place_content button:hover{
+    background-color: #000;
+    color: #fff;
+}
+/* right_side - pagenation */
+.right_side .area_list_page{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-family: "Noto Sans L";
+    font-weight: bold;
+    position: relative;
+}
+.right_side .area_list_page_prev{
+    position: absolute;
+    left: 15px;
+}
+.right_side .area_list_page_next{
+    position: absolute;
+    right: 15px;
+}

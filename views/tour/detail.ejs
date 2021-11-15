@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투어홀릭</title>
+<link rel="stylesheet" href="/css/jquery.fullPage.css" type="text/css">
+<link rel="stylesheet" href="/css/detail.css">
+<link rel="stylesheet" href="/css/font.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/jquery.fullPage.js"></script>
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-family: "Noto Sans L";
+}
+
+th, td {
+  text-align: center;
+  padding: 16px;
+  border: 1px solid #ddd;
+
+}
+tr:nth-child(1) {
+  background-color: #203341;
+  color: white;
+}
+</style>
+<script>
+let latArray = [
+    34.1718000440,
+    38.3343742648,
+    34.0740166502,
+    34.4354594945,
+    35.2077664004
+]
+let lngArray = [
+    126.8621585545,
+    128.5216381039,
+    125.1125145360,
+    126.3547412438,
+    128.5696552845
+]
+function myMap() {
+    let mapProp= {
+        center:new google.maps.LatLng(36.751088927285075, 127.98171693052106),
+        zoom:7,
+    };
+    let map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    for(let i=0;i<lngArray.length;i++){
+        let latlng = new google.maps.LatLng(latArray[i], lngArray[i]);
+        let marker = new google.maps.Marker({
+            position: latlng,
+        });
+        marker.setMap(map);
+    }
+}
+$(document).ready(function(){
+    $("#fullpage").fullpage({
+        autoScrolling : true,
+        scrollHorizontally : true,
+    });
+    // mainPage Link
+    $(".header_title_main").click(function(){
+        location.href="/html/main.html"
+    });
+    $(".home").click(function(){
+      location.href="/html/main.html"
+    });
+});
+</script>
+</head>
+<body>
+<div id="fullpage">
+    <div class="section">
+            <div id="header">
+                <div class="header_title">
+                    <div class="header_title_main">TOUR HOLIC</div>
+                    <div class="header_title_sub">여행에 빠지다</div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="left_side">
+                    <div class="navi">
+                        <div class="navi_list home">홈</div>
+                        <div class="navi_list list">여행 목록</div>
+                        <div class="navi_list">관광지</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="content_list">
+                        <table>
+                            <tr>
+                                <th colspan="2">여행 제목</th>
+                                <th>여행 날짜</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><%=record.title%></th>
+                                <th>2021 - 04 - 23</th>
+                            </tr>
+                            <tr>
+                              <th>No</th>
+                              <th>관광지명</th>
+                              <th>주소</th>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td><%=record.spot1%></td>
+                              <td><%=record.addr1%></td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td><%=record.spot2%></td>
+                              <td><%=record.addr2%></td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td><%=record.spot3%></td>
+                              <td><%=record.addr3%></td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td><%=record.spot4%></td>
+                              <td><%=record.addr4%></td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td><%=record.spot5%></td>
+                              <td><%=record.addr5%></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="content_map">
+                        <div id="googleMap" style="width:100%;height:60%;"></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQNGBqLGgW25841Uxvtg0JJ2mfJCkQ6s&callback=myMap"></script>
+</body>
+</html>

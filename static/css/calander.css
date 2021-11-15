@@ -1,0 +1,45 @@
+#cal_wrapper{
+    box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    text-align: center;
+    border-radius: 10px;
+    z-index: 9999;
+    top: 150px;
+}
+#navi{
+    width:100%;
+    height:70px;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+}
+#navi span{
+    font-size:18px;
+    line-height: 65px;
+}
+#bt_prev, #bt_next{
+    width:50px;
+    height:50px;
+    border:0px;
+    background-color: #fff;
+    line-height: 65px;
+    font-weight: bold;
+}
+#bt_prev{
+    position: absolute;
+    left:0px;
+}
+#bt_next{
+    position: absolute;
+    right:0px;
+}
+#day_area{
+    height:50px;
+    line-height: 45px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+#date_area{
+    height:600px;
+    line-height: 45px;
+}
